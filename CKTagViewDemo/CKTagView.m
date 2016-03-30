@@ -7,8 +7,6 @@
 //
 
 #import "CKTagView.h"
-#import "CKCircleLayout.h"
-
 
 @interface CKTagView ()
 
@@ -48,15 +46,12 @@
     [self addSubview:self.centerbutton];
 }
 #pragma mark -  设置信息
-- (void)ck_setTags:(NSArray *)tagsArray withTagLocation:(CKTagLocation)location andInfo:(NSArray *)infoArray {
-    if (location == CKTagLocationCustom) {
+- (void)ck_setTags:(NSArray *)tagsArray withTagLocation:(CKTagStyle)style andInfo:(NSArray *)infoArray {
+    self.layout.style = style;
+    if (style == CKTagStyleCustom && infoArray) {
         [self.layout ck_setLoatcionInfo:infoArray];
     }
     [self.collectionView setCollectionViewLayout:self.layout];
-    
-    if (location == CKTagLocationDefault) {
-        return;
-    }
 }
 - (void)ck_changeTagsLocationWithInfo:(NSArray *)infoArray animated:(BOOL)animated{
     [self.layout ck_setLoatcionInfo:infoArray];
@@ -72,9 +67,11 @@
     }
 }
 
-#pragma mark -  设置标签视图
-- (void)ck_settagView:(UIView *)tagView withSize:(CGSize)size {
-    
+#pragma mark -  设置标签大小
+- (void)ck_settagViewSize:(CKTagViewSizeCallBack)tagSize {
+    if (tagSize) {
+        [self.layout ck_setTagViewSize:tagSize];
+    }
 }
 #pragma mark -  懒加载
 - (CKCircleLayout *)layout {

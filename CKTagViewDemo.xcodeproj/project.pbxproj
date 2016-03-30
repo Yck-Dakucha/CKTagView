@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F42804A11CABA41900D77BA6 /* CKTagCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F42804A01CABA41900D77BA6 /* CKTagCell.m */; };
 		F46D7F7A1CA909FD00F44590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F791CA909FD00F44590 /* main.m */; };
 		F46D7F7D1CA909FD00F44590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F7C1CA909FD00F44590 /* AppDelegate.m */; };
 		F46D7F801CA909FD00F44590 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F7F1CA909FD00F44590 /* ViewController.m */; };
@@ -37,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F428049F1CABA41900D77BA6 /* CKTagCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTagCell.h; sourceTree = "<group>"; };
+		F42804A01CABA41900D77BA6 /* CKTagCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTagCell.m; sourceTree = "<group>"; };
 		F46D7F751CA909FD00F44590 /* CKTagViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CKTagViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46D7F791CA909FD00F44590 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F46D7F7B1CA909FD00F44590 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -112,6 +115,8 @@
 				F46D7F7C1CA909FD00F44590 /* AppDelegate.m */,
 				F46D7F7E1CA909FD00F44590 /* ViewController.h */,
 				F46D7F7F1CA909FD00F44590 /* ViewController.m */,
+				F428049F1CABA41900D77BA6 /* CKTagCell.h */,
+				F42804A01CABA41900D77BA6 /* CKTagCell.m */,
 				F46D7F811CA909FD00F44590 /* Main.storyboard */,
 				F46D7F841CA909FD00F44590 /* Assets.xcassets */,
 				F46D7F861CA909FD00F44590 /* LaunchScreen.storyboard */,
@@ -293,6 +298,7 @@
 				F46D7F7D1CA909FD00F44590 /* AppDelegate.m in Sources */,
 				F46D7F7A1CA909FD00F44590 /* main.m in Sources */,
 				F46D7FB41CA90E4F00F44590 /* CKCircleLayout.m in Sources */,
+				F42804A11CABA41900D77BA6 /* CKTagCell.m in Sources */,
 				F46D7FAE1CA90A6600F44590 /* CKTagView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

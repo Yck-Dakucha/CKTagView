@@ -8,6 +8,9 @@
 
 #import "CKCircleLayout.h"
 
+#define kCollectinoCenterX self.collectionView.frame.size.width * 0.5
+#define kCollectinoCenterY self.collectionView.frame.size.height * 0.5
+
 @interface CKCircleLayout ()
 
 @property (nonatomic, strong) NSMutableArray *attributesArray;
@@ -16,10 +19,17 @@
 @property (nonatomic, strong) UIBezierPath *linePath;
 @property (nonatomic, strong) NSArray *locationInfo;
 
+@property (nonatomic, copy) CKTagViewSizeCallBack tagSize;
+
 @end
 
 @implementation CKCircleLayout
 
+- (void)setStyle:(CKTagStyle)style {
+    _style = style;
+    [self.linePath removeAllPoints];
+    [self invalidateLayout];
+}
 - (void)ck_setLoatcionInfo:(NSArray *)loactionInfo {
     self.locationInfo = [NSArray arrayWithArray:loactionInfo];
     [self.linePath removeAllPoints];
@@ -43,12 +53,13 @@
         [self.lineLayer display];
     }
 
-    CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    opacityAnimation.duration = 1;
-    opacityAnimation.fromValue = @(0.0);
-    opacityAnimation.toValue = @(1.0);
-    opacityAnimation.removedOnCompletion = YES;
-    [self.lineLayer addAnimation:opacityAnimation forKey:@"opacityAnimation"];
+    CABasicAnimation *strokeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    strokeAnimation.duration = 1;
+    strokeAnimation.fromValue = @(0.0);
+    strokeAnimation.toValue = @(1.0);
+    strokeAnimation.removedOnCompletion = YES;
+    [self.lineLayer addAnimation:strokeAnimation forKey:@"strokeAnimation"];
+    
 }
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     return self.attributesArray;
@@ -57,52 +68,80 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath {
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     NSInteger count = [self.collectionView numberOfItemsInSection:0];
-    //圆心位置
-    CGFloat collectinoCenterX = self.collectionView.frame.size.width * 0.5;
-    CGFloat collectinoCenterY = self.collectionView.frame.size.height * 0.5;
-    //半径
-    CGFloat radius = (self.collectionView.frame.size.height - 80) * 0.5;
+
     //设置attributes
-    attributes.size = CGSizeMake(75, 75);
-    if (count == 1) {
-        attributes.center = CGPointMake(collectinoCenterX, collectinoCenterY);
-    }else {
-        CGFloat angle;
-        //这里减去 M_PI / 2 是为了让第一个在最上边，因为第0个是0度，这是要把他调整为-90度，以此类推
-        if (!self.locationInfo) {
-            angle = (2 * M_PI / count) * indexPath.item - M_PI / 2;
-        }else {
-            CGFloat location = [self.locationInfo[indexPath.item] floatValue];
-            angle = 2 * M_PI * location - M_PI / 2;
+    if (self.tagSize) {
+        CGSize tagSize = self.tagSize(indexPath);
+        if (tagSize.width > 0 && tagSize.height > 0) {
+            attributes.size = tagSize;
         }
-        CGFloat centerX = collectinoCenterX + radius * cos(angle);
-        CGFloat centerY = collectinoCenterY + radius * sin(angle);
-        attributes.center = CGPointMake(centerX, centerY);
+    }else {
+        attributes.size = CGSizeMake(75, 75);
+    }
+    
+    CGFloat width = attributes.size.width;
+    CGFloat hight = attributes.size.height;
+    //半径
+    CGFloat radius = (self.collectionView.frame.size.height - MAX(width, hight) - 5) * 0.5;
+
+    if (count == 1) {
+        attributes.center = CGPointMake(kCollectinoCenterX, kCollectinoCenterY);
+    }else {
+        switch (self.style) {
+            case CKTagStyleDefault:
+                attributes.center = [self ck_defaultStyleWithItem:indexPath.item WithRadius:radius];
+                break;
+                case CKTagStyleCustom:
+                attributes.center = [self ck_customStyleWithItem:indexPath.item WithRadius:radius];
+            default:
+                break;
+        }
         
-        
-        [self.linePath moveToPoint:CGPointMake(collectinoCenterX, collectinoCenterY)];
-        if (ABS(centerX - collectinoCenterX) < 75/2.0) {
-            CGFloat y = collectinoCenterY > centerY ? centerY + 75/2.0 : centerY - 75/2.0;
+        CGFloat centerX = attributes.center.x;
+        CGFloat centerY = attributes.center.y;
+
+        [self.linePath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
+        if (ABS(centerX - kCollectinoCenterX) < width/2.0) {
+            CGFloat y = kCollectinoCenterY > centerY ? centerY + width/2.0 : centerY - hight/2.0;
             [self.linePath addLineToPoint:CGPointMake(centerX,y)];
-        }else if (centerX > collectinoCenterX) {
-            [self.linePath addLineToPoint:CGPointMake(centerX - 75/2.0, centerY + 75/2.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX - 75/2.0 + 75, centerY + 75/2.0)];
+        }else if (centerX > kCollectinoCenterX) {
+            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0)];
         }else {
-            [self.linePath addLineToPoint:CGPointMake(centerX + 75/2.0, centerY + 75/2.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX + 75/2.0 - 75, centerY + 75/2.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0)];
         }
         
     }
-    
-    
     return attributes;
-    
 }
+
+#pragma mark -  默认围绕中心的圆形布局
+
+- (CGPoint)ck_defaultStyleWithItem:(NSInteger)index WithRadius:(CGFloat)radius {
+    
+    NSInteger count = [self.collectionView numberOfItemsInSection:0];
+    CGFloat angle = (2 * M_PI / count) * index - M_PI / 2;
+    return CGPointMake(kCollectinoCenterX + radius * cos(angle), kCollectinoCenterY + radius * sin(angle));
+}
+
+#pragma mark -  自定义布局
+
+- (CGPoint)ck_customStyleWithItem:(NSInteger)index WithRadius:(CGFloat)radius {
+    CGFloat location = [self.locationInfo[index] floatValue];
+    CGFloat angle = 2 * M_PI * location - M_PI / 2;
+    return CGPointMake(kCollectinoCenterX + radius * cos(angle), kCollectinoCenterY + radius * sin(angle));
+}
+
+
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }
-
-
+- (void)ck_setTagViewSize:(CKTagViewSizeCallBack)tagSize {
+    if (tagSize) {
+        self.tagSize = tagSize;
+    }
+}
 
 #pragma mark -  懒加载
 - (NSMutableArray *)attributesArray {
