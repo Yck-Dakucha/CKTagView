@@ -1,0 +1,545 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F46D7F7A1CA909FD00F44590 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F791CA909FD00F44590 /* main.m */; };
+		F46D7F7D1CA909FD00F44590 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F7C1CA909FD00F44590 /* AppDelegate.m */; };
+		F46D7F801CA909FD00F44590 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F7F1CA909FD00F44590 /* ViewController.m */; };
+		F46D7F831CA909FD00F44590 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46D7F811CA909FD00F44590 /* Main.storyboard */; };
+		F46D7F851CA909FD00F44590 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46D7F841CA909FD00F44590 /* Assets.xcassets */; };
+		F46D7F881CA909FD00F44590 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46D7F861CA909FD00F44590 /* LaunchScreen.storyboard */; };
+		F46D7F931CA909FD00F44590 /* CKTagViewDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F921CA909FD00F44590 /* CKTagViewDemoTests.m */; };
+		F46D7F9E1CA909FD00F44590 /* CKTagViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F9D1CA909FD00F44590 /* CKTagViewDemoUITests.m */; };
+		F46D7FAE1CA90A6600F44590 /* CKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7FAD1CA90A6600F44590 /* CKTagView.m */; };
+		F46D7FB41CA90E4F00F44590 /* CKCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F46D7F8F1CA909FD00F44590 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46D7F6D1CA909FD00F44590 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F46D7F741CA909FD00F44590;
+			remoteInfo = CKTagViewDemo;
+		};
+		F46D7F9A1CA909FD00F44590 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F46D7F6D1CA909FD00F44590 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F46D7F741CA909FD00F44590;
+			remoteInfo = CKTagViewDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F46D7F751CA909FD00F44590 /* CKTagViewDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CKTagViewDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46D7F791CA909FD00F44590 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F46D7F7B1CA909FD00F44590 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F46D7F7C1CA909FD00F44590 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F46D7F7E1CA909FD00F44590 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		F46D7F7F1CA909FD00F44590 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		F46D7F821CA909FD00F44590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F46D7F841CA909FD00F44590 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F46D7F871CA909FD00F44590 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F46D7F891CA909FD00F44590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46D7F8E1CA909FD00F44590 /* CKTagViewDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CKTagViewDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46D7F921CA909FD00F44590 /* CKTagViewDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKTagViewDemoTests.m; sourceTree = "<group>"; };
+		F46D7F941CA909FD00F44590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46D7F991CA909FD00F44590 /* CKTagViewDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CKTagViewDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F46D7F9D1CA909FD00F44590 /* CKTagViewDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CKTagViewDemoUITests.m; sourceTree = "<group>"; };
+		F46D7F9F1CA909FD00F44590 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F46D7FAC1CA90A6600F44590 /* CKTagView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTagView.h; sourceTree = "<group>"; };
+		F46D7FAD1CA90A6600F44590 /* CKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTagView.m; sourceTree = "<group>"; };
+		F46D7FB21CA90E4F00F44590 /* CKCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCircleLayout.h; sourceTree = "<group>"; };
+		F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCircleLayout.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F46D7F721CA909FD00F44590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F8B1CA909FD00F44590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F961CA909FD00F44590 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F46D7F6C1CA909FD00F44590 = {
+			isa = PBXGroup;
+			children = (
+				F46D7F771CA909FD00F44590 /* CKTagViewDemo */,
+				F46D7F911CA909FD00F44590 /* CKTagViewDemoTests */,
+				F46D7F9C1CA909FD00F44590 /* CKTagViewDemoUITests */,
+				F46D7F761CA909FD00F44590 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F46D7F761CA909FD00F44590 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7F751CA909FD00F44590 /* CKTagViewDemo.app */,
+				F46D7F8E1CA909FD00F44590 /* CKTagViewDemoTests.xctest */,
+				F46D7F991CA909FD00F44590 /* CKTagViewDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F46D7F771CA909FD00F44590 /* CKTagViewDemo */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7FAB1CA90A4F00F44590 /* TagView */,
+				F46D7F7B1CA909FD00F44590 /* AppDelegate.h */,
+				F46D7F7C1CA909FD00F44590 /* AppDelegate.m */,
+				F46D7F7E1CA909FD00F44590 /* ViewController.h */,
+				F46D7F7F1CA909FD00F44590 /* ViewController.m */,
+				F46D7F811CA909FD00F44590 /* Main.storyboard */,
+				F46D7F841CA909FD00F44590 /* Assets.xcassets */,
+				F46D7F861CA909FD00F44590 /* LaunchScreen.storyboard */,
+				F46D7F891CA909FD00F44590 /* Info.plist */,
+				F46D7F781CA909FD00F44590 /* Supporting Files */,
+			);
+			path = CKTagViewDemo;
+			sourceTree = "<group>";
+		};
+		F46D7F781CA909FD00F44590 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7F791CA909FD00F44590 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F46D7F911CA909FD00F44590 /* CKTagViewDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7F921CA909FD00F44590 /* CKTagViewDemoTests.m */,
+				F46D7F941CA909FD00F44590 /* Info.plist */,
+			);
+			path = CKTagViewDemoTests;
+			sourceTree = "<group>";
+		};
+		F46D7F9C1CA909FD00F44590 /* CKTagViewDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7F9D1CA909FD00F44590 /* CKTagViewDemoUITests.m */,
+				F46D7F9F1CA909FD00F44590 /* Info.plist */,
+			);
+			path = CKTagViewDemoUITests;
+			sourceTree = "<group>";
+		};
+		F46D7FAB1CA90A4F00F44590 /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				F46D7FB21CA90E4F00F44590 /* CKCircleLayout.h */,
+				F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */,
+				F46D7FAC1CA90A6600F44590 /* CKTagView.h */,
+				F46D7FAD1CA90A6600F44590 /* CKTagView.m */,
+			);
+			name = TagView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F46D7F741CA909FD00F44590 /* CKTagViewDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46D7FA21CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemo" */;
+			buildPhases = (
+				F46D7F711CA909FD00F44590 /* Sources */,
+				F46D7F721CA909FD00F44590 /* Frameworks */,
+				F46D7F731CA909FD00F44590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CKTagViewDemo;
+			productName = CKTagViewDemo;
+			productReference = F46D7F751CA909FD00F44590 /* CKTagViewDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F46D7F8D1CA909FD00F44590 /* CKTagViewDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46D7FA51CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemoTests" */;
+			buildPhases = (
+				F46D7F8A1CA909FD00F44590 /* Sources */,
+				F46D7F8B1CA909FD00F44590 /* Frameworks */,
+				F46D7F8C1CA909FD00F44590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F46D7F901CA909FD00F44590 /* PBXTargetDependency */,
+			);
+			name = CKTagViewDemoTests;
+			productName = CKTagViewDemoTests;
+			productReference = F46D7F8E1CA909FD00F44590 /* CKTagViewDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F46D7F981CA909FD00F44590 /* CKTagViewDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F46D7FA81CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemoUITests" */;
+			buildPhases = (
+				F46D7F951CA909FD00F44590 /* Sources */,
+				F46D7F961CA909FD00F44590 /* Frameworks */,
+				F46D7F971CA909FD00F44590 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F46D7F9B1CA909FD00F44590 /* PBXTargetDependency */,
+			);
+			name = CKTagViewDemoUITests;
+			productName = CKTagViewDemoUITests;
+			productReference = F46D7F991CA909FD00F44590 /* CKTagViewDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F46D7F6D1CA909FD00F44590 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = CK;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = CK;
+				TargetAttributes = {
+					F46D7F741CA909FD00F44590 = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					F46D7F8D1CA909FD00F44590 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = F46D7F741CA909FD00F44590;
+					};
+					F46D7F981CA909FD00F44590 = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = F46D7F741CA909FD00F44590;
+					};
+				};
+			};
+			buildConfigurationList = F46D7F701CA909FD00F44590 /* Build configuration list for PBXProject "CKTagViewDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F46D7F6C1CA909FD00F44590;
+			productRefGroup = F46D7F761CA909FD00F44590 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F46D7F741CA909FD00F44590 /* CKTagViewDemo */,
+				F46D7F8D1CA909FD00F44590 /* CKTagViewDemoTests */,
+				F46D7F981CA909FD00F44590 /* CKTagViewDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F46D7F731CA909FD00F44590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46D7F881CA909FD00F44590 /* LaunchScreen.storyboard in Resources */,
+				F46D7F851CA909FD00F44590 /* Assets.xcassets in Resources */,
+				F46D7F831CA909FD00F44590 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F8C1CA909FD00F44590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F971CA909FD00F44590 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F46D7F711CA909FD00F44590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46D7F801CA909FD00F44590 /* ViewController.m in Sources */,
+				F46D7F7D1CA909FD00F44590 /* AppDelegate.m in Sources */,
+				F46D7F7A1CA909FD00F44590 /* main.m in Sources */,
+				F46D7FB41CA90E4F00F44590 /* CKCircleLayout.m in Sources */,
+				F46D7FAE1CA90A6600F44590 /* CKTagView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F8A1CA909FD00F44590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46D7F931CA909FD00F44590 /* CKTagViewDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F46D7F951CA909FD00F44590 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F46D7F9E1CA909FD00F44590 /* CKTagViewDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F46D7F901CA909FD00F44590 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F46D7F741CA909FD00F44590 /* CKTagViewDemo */;
+			targetProxy = F46D7F8F1CA909FD00F44590 /* PBXContainerItemProxy */;
+		};
+		F46D7F9B1CA909FD00F44590 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F46D7F741CA909FD00F44590 /* CKTagViewDemo */;
+			targetProxy = F46D7F9A1CA909FD00F44590 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F46D7F811CA909FD00F44590 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46D7F821CA909FD00F44590 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F46D7F861CA909FD00F44590 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F46D7F871CA909FD00F44590 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F46D7FA01CA909FD00F44590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F46D7FA11CA909FD00F44590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F46D7FA31CA909FD00F44590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CKTagViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F46D7FA41CA909FD00F44590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = CKTagViewDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		F46D7FA61CA909FD00F44590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CKTagViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKTagViewDemo.app/CKTagViewDemo";
+			};
+			name = Debug;
+		};
+		F46D7FA71CA909FD00F44590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = CKTagViewDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CKTagViewDemo.app/CKTagViewDemo";
+			};
+			name = Release;
+		};
+		F46D7FA91CA909FD00F44590 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CKTagViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CKTagViewDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		F46D7FAA1CA909FD00F44590 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = CKTagViewDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = CK.Dakucha.CKTagViewDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CKTagViewDemo;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F46D7F701CA909FD00F44590 /* Build configuration list for PBXProject "CKTagViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46D7FA01CA909FD00F44590 /* Debug */,
+				F46D7FA11CA909FD00F44590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46D7FA21CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46D7FA31CA909FD00F44590 /* Debug */,
+				F46D7FA41CA909FD00F44590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46D7FA51CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46D7FA61CA909FD00F44590 /* Debug */,
+				F46D7FA71CA909FD00F44590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F46D7FA81CA909FD00F44590 /* Build configuration list for PBXNativeTarget "CKTagViewDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F46D7FA91CA909FD00F44590 /* Debug */,
+				F46D7FAA1CA909FD00F44590 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F46D7F6D1CA909FD00F44590 /* Project object */;
+}
