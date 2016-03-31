@@ -53,12 +53,24 @@
         [self.lineLayer display];
     }
 
-    CABasicAnimation *strokeAnimation = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-    strokeAnimation.duration = 1;
-    strokeAnimation.fromValue = @(0.0);
-    strokeAnimation.toValue = @(1.0);
-    strokeAnimation.removedOnCompletion = YES;
-    [self.lineLayer addAnimation:strokeAnimation forKey:@"strokeAnimation"];
+    CABasicAnimation *strokeAnimation1 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+    strokeAnimation1.duration = 1;
+    strokeAnimation1.fromValue = @(0.0);
+    strokeAnimation1.toValue = @(1.0);
+    strokeAnimation1.removedOnCompletion = YES;
+//    CABasicAnimation *strokeAnimation2 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+//    strokeAnimation2.duration = 1;
+//    strokeAnimation2.fromValue = @(0.3);
+//    strokeAnimation2.toValue = @(0.6);
+//    strokeAnimation2.removedOnCompletion = YES;
+//    CABasicAnimation *strokeAnimation3 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
+//    strokeAnimation3.duration = 1;
+//    strokeAnimation3.fromValue = @(0.6);
+//    strokeAnimation3.toValue = @(1.0);
+//    strokeAnimation3.removedOnCompletion = YES;
+    [self.lineLayer addAnimation:strokeAnimation1 forKey:nil];
+//    [self.lineLayer addAnimation:strokeAnimation2 forKey:nil];
+//    [self.lineLayer addAnimation:strokeAnimation3 forKey:nil];
     
 }
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
@@ -82,17 +94,35 @@
     CGFloat width = attributes.size.width;
     CGFloat hight = attributes.size.height;
     //半径
-    CGFloat radius = (self.collectionView.frame.size.height - MAX(width, hight) - 5) * 0.5;
+    if (!self.radius) {
+        self.radius = 50;
+    }
 
     if (count == 1) {
         attributes.center = CGPointMake(kCollectinoCenterX, kCollectinoCenterY);
     }else {
         switch (self.style) {
             case CKTagStyleDefault:
-                attributes.center = [self ck_defaultStyleWithItem:indexPath.item WithRadius:radius];
+                attributes.center = [self ck_defaultStyleWithItem:indexPath.item WithRadius:self.radius];
                 break;
-                case CKTagStyleCustom:
-                attributes.center = [self ck_customStyleWithItem:indexPath.item WithRadius:radius];
+            case CKTagStyleLeftRight:
+            {
+                CGFloat leftCount = count%2 == 0 ? count/2 : count/2 + 1;
+                attributes.center = [self ck_leftRightStyleWithItem:indexPath.item itemWidth:width LeftCount:leftCount];
+                break;
+            }
+            case CKTagStyleAllLeft:
+                attributes.center = [self ck_leftRightStyleWithItem:indexPath.item itemWidth:width LeftCount:count];
+                break;
+            case CKTagStyleAllright:
+                attributes.center = [self ck_leftRightStyleWithItem:indexPath.item itemWidth:width LeftCount:0];
+                break;
+            case CKTagStyleLeftOnltOne:
+                attributes.center = [self ck_leftRightStyleWithItem:indexPath.item itemWidth:width LeftCount:1];
+                break;
+            case CKTagStyleRightOnlyOne:
+                attributes.center = [self ck_leftRightStyleWithItem:indexPath.item itemWidth:width LeftCount:count - 1];
+                break;
             default:
                 break;
         }
@@ -102,14 +132,14 @@
 
         [self.linePath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
         if (ABS(centerX - kCollectinoCenterX) < width/2.0) {
-            CGFloat y = kCollectinoCenterY > centerY ? centerY + width/2.0 : centerY - hight/2.0;
+            CGFloat y = kCollectinoCenterY > centerY ? centerY + hight/2.0 : centerY - hight/2.0;
             [self.linePath addLineToPoint:CGPointMake(centerX,y)];
         }else if (centerX > kCollectinoCenterX) {
-            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0 + 5.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0 + 5.0)];
         }else {
-            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0 + 5.0)];
+            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0 + 5.0)];
         }
         
     }
@@ -133,7 +163,33 @@
     return CGPointMake(kCollectinoCenterX + radius * cos(angle), kCollectinoCenterY + radius * sin(angle));
 }
 
+#pragma mark -  自定义左右布局
 
+- (CGPoint)ck_leftRightStyleWithItem:(NSInteger)index itemWidth:(CGFloat)width LeftCount:(NSInteger)leftCount {
+    NSInteger count = [self.collectionView numberOfItemsInSection:0];
+    CGFloat leftDelta = (CGFloat)self.collectionView.frame.size.height/leftCount;
+    CGFloat rightDelta = (CGFloat)self.collectionView.frame.size.height/(count - leftCount);
+    if ((index + 1) <= leftCount) {
+        if (leftCount == 1) {
+            return CGPointMake(kCollectinoCenterX - self.radius,(CGFloat)leftDelta/2);
+        }
+        return CGPointMake(kCollectinoCenterX - self.radius, leftDelta *(index + 1) - (CGFloat)leftDelta/2);
+    }else{
+        if ((count - leftCount) == 1) {
+            return CGPointMake(kCollectinoCenterX + self.radius,(CGFloat)rightDelta/2);
+        }
+        return CGPointMake(kCollectinoCenterX + self.radius, rightDelta *(index - leftCount + 1) - (CGFloat)rightDelta/2);
+    }
+}
+#pragma mark -  更换布局
+- (void)ck_changeStyle {
+    if (self.style == 5) {
+        self.style = 0;
+        return;
+    }
+    self.style += 1;
+}
+#pragma mark -  设置刷新
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(CGRect)newBounds {
     return YES;
 }

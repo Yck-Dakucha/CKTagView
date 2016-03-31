@@ -46,12 +46,15 @@
     [self addSubview:self.centerbutton];
 }
 #pragma mark -  设置信息
-- (void)ck_setTags:(NSArray *)tagsArray withTagLocation:(CKTagStyle)style andInfo:(NSArray *)infoArray {
+- (void)ck_setTags:(NSArray *)tagsArray withTagLocation:(CKTagStyle)style radius:(CGFloat)radius andInfo:(NSArray *)infoArray {
+    _style = style;
     self.layout.style = style;
-    if (style == CKTagStyleCustom && infoArray) {
-        [self.layout ck_setLoatcionInfo:infoArray];
-    }
+    self.layout.radius = radius;
     [self.collectionView setCollectionViewLayout:self.layout];
+}
+- (void)setStyle:(CKTagStyle)style {
+    _style = style;
+    self.layout.style = style;
 }
 - (void)ck_changeTagsLocationWithInfo:(NSArray *)infoArray animated:(BOOL)animated{
     [self.layout ck_setLoatcionInfo:infoArray];
@@ -62,11 +65,15 @@
     }
 }
 - (void)changeLocation {
+    __weak typeof(self) weakSelf = self;
     if (self.buttonClick) {
-        self.buttonClick(self);
+        self.buttonClick(weakSelf);
     }
 }
-
+#pragma mark -  改变布局
+- (void)ck_changeStyle {
+    [self.layout ck_changeStyle];
+}
 #pragma mark -  设置标签大小
 - (void)ck_settagViewSize:(CKTagViewSizeCallBack)tagSize {
     if (tagSize) {

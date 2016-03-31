@@ -10,12 +10,18 @@
 
 typedef NS_ENUM(NSInteger,CKTagStyle) {
     CKTagStyleDefault, //默认是顺时针平均分布
-    CKTagStyleCustom,  //自定义布局，需要传输位置信息
+    CKTagStyleLeftRight,
+    CKTagStyleAllLeft,
+    CKTagStyleAllright,
+    CKTagStyleLeftOnltOne,
+    CKTagStyleRightOnlyOne,
 };
 
 typedef CGSize(^CKTagViewSizeCallBack)(NSIndexPath *indexPath);
 
 @interface CKCircleLayout : UICollectionViewLayout
+
+@property (nonatomic, assign) CGFloat radius;
 
 @property (nonatomic, assign) CKTagStyle style;
 
@@ -23,4 +29,5 @@ typedef CGSize(^CKTagViewSizeCallBack)(NSIndexPath *indexPath);
 
 - (void)ck_setTagViewSize:(CKTagViewSizeCallBack)tagSize;
 
+- (void)ck_changeStyle;
 @end

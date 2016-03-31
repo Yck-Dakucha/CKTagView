@@ -22,16 +22,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.dataArray = @[@1,@2,@3];
+    self.dataArray = @[@1,@2,@3,@4,@5,@6,@7,@8,@9];
     
     
     [self.tagView.collectionView registerClass:[CKTagCell class] forCellWithReuseIdentifier:@"CardSliderCell"];
     self.tagView.collectionView.dataSource = self;
     self.tagView.collectionView.delegate   = self;
     
-    [self.tagView ck_setTags:self.dataArray withTagLocation:CKTagStyleCustom andInfo:@[@(7/8.0),@(5/8.0),@(5/16.0)]];
+    [self.tagView ck_setTags:self.dataArray withTagLocation:CKTagStyleDefault radius:100 andInfo:nil];
     [self.tagView ck_setMiddleButtonClick:^(CKTagView *tagView) {
-        [tagView ck_changeTagsLocationWithInfo:@[[NSNumber numberWithFloat:1/8.0],[NSNumber numberWithFloat:1/4.0],[NSNumber numberWithFloat:3/8.0]] animated:YES];
+//        [tagView ck_changeTagsLocationWithInfo:@[@(1/8.0),@(1/4.0),@(3/8.0)] animated:YES];
+        [tagView ck_changeStyle];
     }];
     [self.tagView ck_settagViewSize:^CGSize(NSIndexPath *indexPath) {
         return CGSizeMake(90, 20);
@@ -60,6 +61,8 @@
     [tagCell ck_setTitle:[NSString stringWithFormat:@"%@",self.dataArray[indexPath.row]]];
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    CKTagCell *cell = (CKTagCell *)[collectionView cellForItemAtIndexPath:indexPath];
+    NSLog(@">>>>>> %@",cell);
     
 }
 - (CGSize) collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
