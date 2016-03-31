@@ -36,6 +36,10 @@
     [self invalidateLayout];
 }
 
+- (void)prepareForCollectionViewUpdates:(NSArray<UICollectionViewUpdateItem *> *)updateItems {
+    [self.linePath removeAllPoints];
+    [self invalidateLayout];
+}
 - (void)prepareLayout {
     [super prepareLayout];
     [self.attributesArray removeAllObjects];
@@ -99,7 +103,7 @@
     }
 
     if (count == 1) {
-        attributes.center = CGPointMake(kCollectinoCenterX, kCollectinoCenterY);
+        attributes.center = CGPointMake(kCollectinoCenterX - self.radius, self.collectionView.frame.size.height/4.0);
     }else {
         switch (self.style) {
             case CKTagStyleDefault:
@@ -126,23 +130,23 @@
             default:
                 break;
         }
-        
-        CGFloat centerX = attributes.center.x;
-        CGFloat centerY = attributes.center.y;
-
-        [self.linePath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
-        if (ABS(centerX - kCollectinoCenterX) < width/2.0) {
-            CGFloat y = kCollectinoCenterY > centerY ? centerY + hight/2.0 : centerY - hight/2.0;
-            [self.linePath addLineToPoint:CGPointMake(centerX,y)];
-        }else if (centerX > kCollectinoCenterX) {
-            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0 + 5.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0 + 5.0)];
-        }else {
-            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0 + 5.0)];
-            [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0 + 5.0)];
-        }
-        
     }
+    
+    CGFloat centerX = attributes.center.x;
+    CGFloat centerY = attributes.center.y;
+
+    [self.linePath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
+    if (ABS(centerX - kCollectinoCenterX) < width/2.0) {
+        CGFloat y = kCollectinoCenterY > centerY ? centerY + hight/2.0 : centerY - hight/2.0;
+        [self.linePath addLineToPoint:CGPointMake(centerX,y)];
+    }else if (centerX > kCollectinoCenterX) {
+        [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0 + 5.0)];
+        [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0 + 5.0)];
+    }else {
+        [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0 + 5.0)];
+        [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0 + 5.0)];
+    }
+        
     return attributes;
 }
 
