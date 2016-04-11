@@ -25,46 +25,28 @@
     self.dataArray = [NSMutableArray arrayWithArray:@[@1,@2,@3,@4,@5,@6,@7,@8,@9]];
     
     
-    [self.tagView.collectionView registerClass:[CKTagCell class] forCellWithReuseIdentifier:@"CardSliderCell"];
-    self.tagView.collectionView.dataSource = self;
-    self.tagView.collectionView.delegate   = self;
-    
     [self.tagView ck_setTags:self.dataArray withTagLocation:CKTagStyleDefault radius:100 andInfo:nil];
     [self.tagView ck_setMiddleButtonClick:^(CKTagView *tagView) {
         [tagView ck_changeStyle];
     }];
-    [self.tagView ck_settagViewSize:^CGSize(NSIndexPath *indexPath) {
-        return CGSizeMake(90, 20);
+    
+    [self.tagView ck_setCellForItemAtIndexPath:^UICollectionViewCell *(UICollectionView *collectionView, NSIndexPath *indexPath) {
+        static NSString *identifier = @"CardSliderCell";
+        CKTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
+        return cell;
+    } withIdentifier:@"CardSliderCell" Size:^CGSize(NSIndexPath *indexPath) {
+        return CGSizeMake(120, 20);
+    } willDispalyCell:^(UICollectionViewCell *cell, NSIndexPath *indexPath) {
+        CKTagCell *tagCell = (CKTagCell *)cell;
+        [tagCell ck_setTitle:[NSString stringWithFormat:@"%@",self.dataArray[indexPath.row]]];
+    } didSelectItemAtIndexPath:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
+        if (self.dataArray.count == 1) {
+            return;
+        }
+        [self.dataArray removeObjectAtIndex:indexPath.item];
+        [collectionView deleteItemsAtIndexPaths:@[indexPath]];
     }];
 }
 
-#pragma mark -  collectionView dataSource
-- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return 1;
-}
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.dataArray.count;
-}
-
-#pragma mark -  collectionView Delegate
-- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *identifier = @"CardSliderCell";
-    CKTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    
-    return cell;
-}
-
-- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    CKTagCell *tagCell = (CKTagCell *)cell;
-    [tagCell ck_setTitle:[NSString stringWithFormat:@"%@",self.dataArray[indexPath.row]]];
-}
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.dataArray.count == 1) {
-        return;
-    }
-    [self.dataArray removeObjectAtIndex:indexPath.item];
-    [collectionView deleteItemsAtIndexPaths:@[indexPath]];
-    
-}
 @end

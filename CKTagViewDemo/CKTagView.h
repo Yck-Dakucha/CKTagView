@@ -27,6 +27,11 @@ typedef void(^CKTagViewCallCack)(CKTagView *tagView);
 - (void)ck_changeTagsLocationWithInfo:(NSArray *)infoArray animated:(BOOL)animated;
 - (void)ck_setMiddleButtonClick:(CKTagViewCallCack)buttonClick;
 
-- (void)ck_settagViewSize:(CKTagViewSizeCallBack)tagSize;
 - (void)ck_changeStyle;
+
+- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+                      withIdentifier:(NSString *)identifier
+                                Size:(CKTagViewSizeCallBack)tagSize
+                     willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
+            didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem;
 @end

@@ -18,6 +18,7 @@
 		F46D7F9E1CA909FD00F44590 /* CKTagViewDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7F9D1CA909FD00F44590 /* CKTagViewDemoUITests.m */; };
 		F46D7FAE1CA90A6600F44590 /* CKTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7FAD1CA90A6600F44590 /* CKTagView.m */; };
 		F46D7FB41CA90E4F00F44590 /* CKCircleLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */; };
+		F4FDB6A71CB5FD6100645752 /* CKTagViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = F4FDB6A61CB5FD6100645752 /* CKTagViewManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		F46D7FAD1CA90A6600F44590 /* CKTagView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTagView.m; sourceTree = "<group>"; };
 		F46D7FB21CA90E4F00F44590 /* CKCircleLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKCircleLayout.h; sourceTree = "<group>"; };
 		F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKCircleLayout.m; sourceTree = "<group>"; };
+		F4FDB6A51CB5FD6100645752 /* CKTagViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKTagViewManager.h; sourceTree = "<group>"; };
+		F4FDB6A61CB5FD6100645752 /* CKTagViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKTagViewManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +162,8 @@
 				F46D7FB31CA90E4F00F44590 /* CKCircleLayout.m */,
 				F46D7FAC1CA90A6600F44590 /* CKTagView.h */,
 				F46D7FAD1CA90A6600F44590 /* CKTagView.m */,
+				F4FDB6A51CB5FD6100645752 /* CKTagViewManager.h */,
+				F4FDB6A61CB5FD6100645752 /* CKTagViewManager.m */,
 			);
 			name = TagView;
 			sourceTree = "<group>";
@@ -294,6 +299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4FDB6A71CB5FD6100645752 /* CKTagViewManager.m in Sources */,
 				F46D7F801CA909FD00F44590 /* ViewController.m in Sources */,
 				F46D7F7D1CA909FD00F44590 /* AppDelegate.m in Sources */,
 				F46D7F7A1CA909FD00F44590 /* main.m in Sources */,

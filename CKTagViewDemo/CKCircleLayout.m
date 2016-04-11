@@ -56,26 +56,12 @@
         self.lineLayer.path = self.linePath.CGPath;
         [self.lineLayer display];
     }
-
     CABasicAnimation *strokeAnimation1 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
     strokeAnimation1.duration = 1;
-    strokeAnimation1.fromValue = @(0.0);
-    strokeAnimation1.toValue = @(1.0);
+    strokeAnimation1.fromValue = @0.0f;
+    strokeAnimation1.toValue = @1.0f;
     strokeAnimation1.removedOnCompletion = YES;
-//    CABasicAnimation *strokeAnimation2 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    strokeAnimation2.duration = 1;
-//    strokeAnimation2.fromValue = @(0.3);
-//    strokeAnimation2.toValue = @(0.6);
-//    strokeAnimation2.removedOnCompletion = YES;
-//    CABasicAnimation *strokeAnimation3 = [CABasicAnimation animationWithKeyPath:@"strokeEnd"];
-//    strokeAnimation3.duration = 1;
-//    strokeAnimation3.fromValue = @(0.6);
-//    strokeAnimation3.toValue = @(1.0);
-//    strokeAnimation3.removedOnCompletion = YES;
-    [self.lineLayer addAnimation:strokeAnimation1 forKey:nil];
-//    [self.lineLayer addAnimation:strokeAnimation2 forKey:nil];
-//    [self.lineLayer addAnimation:strokeAnimation3 forKey:nil];
-    
+    [self.lineLayer addAnimation:strokeAnimation1 forKey:@"asdasdas"];
 }
 - (NSArray<UICollectionViewLayoutAttributes *> *)layoutAttributesForElementsInRect:(CGRect)rect {
     return self.attributesArray;
@@ -135,18 +121,19 @@
     CGFloat centerX = attributes.center.x;
     CGFloat centerY = attributes.center.y;
 
-    [self.linePath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
+    UIBezierPath *bezierPath = [UIBezierPath bezierPath];
+    [bezierPath moveToPoint:CGPointMake(kCollectinoCenterX, kCollectinoCenterY)];
     if (ABS(centerX - kCollectinoCenterX) < width/2.0) {
         CGFloat y = kCollectinoCenterY > centerY ? centerY + hight/2.0 : centerY - hight/2.0;
-        [self.linePath addLineToPoint:CGPointMake(centerX,y)];
+        [bezierPath addLineToPoint:CGPointMake(centerX,y)];
     }else if (centerX > kCollectinoCenterX) {
-        [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0 + 5.0)];
-        [self.linePath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0 + 5.0)];
+        [bezierPath addLineToPoint:CGPointMake(centerX - width/2.0, centerY + hight/2.0 + 5.0)];
+        [bezierPath addLineToPoint:CGPointMake(centerX - width/2.0 + width, centerY + hight/2.0 + 5.0)];
     }else {
-        [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0 + 5.0)];
-        [self.linePath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0 + 5.0)];
+        [bezierPath addLineToPoint:CGPointMake(centerX + width/2.0, centerY + hight/2.0 + 5.0)];
+        [bezierPath addLineToPoint:CGPointMake(centerX + width/2.0 - width, centerY + hight/2.0 + 5.0)];
     }
-        
+    [self.linePath appendPath:bezierPath];
     return attributes;
 }
 

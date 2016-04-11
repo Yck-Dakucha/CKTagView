@@ -7,11 +7,13 @@
 //
 
 #import "CKTagView.h"
+#import "CKTagViewManager.h"
 
 @interface CKTagView ()
 
 @property (nonatomic, strong) CKCircleLayout *layout;
 @property (nonatomic, strong) UIButton *centerbutton;
+@property (nonatomic, strong) CKTagViewManager *manager;
 
 @property (nonatomic, copy) CKTagViewCallCack buttonClick;
 
@@ -48,6 +50,7 @@
 #pragma mark -  设置信息
 - (void)ck_setTags:(NSArray *)tagsArray withTagLocation:(CKTagStyle)style radius:(CGFloat)radius andInfo:(NSArray *)infoArray {
     _style = style;
+    self.manager.dataArray = [NSMutableArray arrayWithArray:tagsArray];
     self.layout.style = style;
     self.layout.radius = radius;
     [self.collectionView setCollectionViewLayout:self.layout];
@@ -75,17 +78,33 @@
     [self.layout ck_changeStyle];
 }
 #pragma mark -  设置标签大小
-- (void)ck_settagViewSize:(CKTagViewSizeCallBack)tagSize {
+- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+                      withIdentifier:(NSString *)identifier
+                                Size:(CKTagViewSizeCallBack)tagSize
+                     willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
+            didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem {
+    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
+    self.collectionView.delegate = self.manager;
+    self.collectionView.dataSource = self.manager;
     if (tagSize) {
         [self.layout ck_setTagViewSize:tagSize];
     }
+
+    [self.manager ck_setCellForItemAtIndexPath:cellForItem willDispalyCell:display didSelectItemAtIndexPath:didSelectItem];
 }
+
 #pragma mark -  懒加载
 - (CKCircleLayout *)layout {
     if (!_layout) {
         _layout = [[CKCircleLayout alloc] init];
     }
     return _layout;
+}
+- (CKTagViewManager *)manager {
+    if (!_manager) {
+        _manager = [CKTagViewManager manager];
+    }
+    return _manager;
 }
 - (UICollectionView *)collectionView {
     if (!_collectionView) {
