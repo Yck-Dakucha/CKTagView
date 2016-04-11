@@ -29,7 +29,7 @@ typedef void(^CKTagViewCallCack)(CKTagView *tagView);
 
 - (void)ck_changeStyle;
 
-- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+- (void)ck_setCellForItemAtIndexPath:(Class(^)(NSIndexPath *indexPath))cellClassForItem
                       withIdentifier:(NSString *)identifier
                                 Size:(CKTagViewSizeCallBack)tagSize
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display

@@ -78,19 +78,20 @@
     [self.layout ck_changeStyle];
 }
 #pragma mark -  设置标签大小
-- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+- (void)ck_setCellForItemAtIndexPath:(Class(^)(NSIndexPath *indexPath))cellClassForItem
                       withIdentifier:(NSString *)identifier
                                 Size:(CKTagViewSizeCallBack)tagSize
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
             didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem {
-    [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:identifier];
+    Class class = cellClassForItem([NSIndexPath indexPathForItem:0 inSection:0]);
+    [self.collectionView registerClass:class forCellWithReuseIdentifier:identifier];
     self.collectionView.delegate = self.manager;
     self.collectionView.dataSource = self.manager;
     if (tagSize) {
         [self.layout ck_setTagViewSize:tagSize];
     }
-
-    [self.manager ck_setCellForItemAtIndexPath:cellForItem willDispalyCell:display didSelectItemAtIndexPath:didSelectItem];
+    self.manager.identifier = identifier;
+    [self.manager ck_setCellForItemAtIndexPath:cellClassForItem willDispalyCell:display didSelectItemAtIndexPath:didSelectItem];
 }
 
 #pragma mark -  懒加载

@@ -29,11 +29,12 @@
     [self.tagView ck_setMiddleButtonClick:^(CKTagView *tagView) {
         [tagView ck_changeStyle];
     }];
-    
-    [self.tagView ck_setCellForItemAtIndexPath:^UICollectionViewCell *(UICollectionView *collectionView, NSIndexPath *indexPath) {
-        static NSString *identifier = @"CardSliderCell";
-        CKTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-        return cell;
+//    [self.tagView ck_setCellForItemAtIndexPath:^Class(NSIndexPath *indexPath) {
+//        <#code#>
+//    } withIdentifier:<#(NSString *)#> Size:<#^CGSize(NSIndexPath *indexPath)tagSize#> willDispalyCell:<#^(UICollectionViewCell *cell, NSIndexPath *indexPath)display#> didSelectItemAtIndexPath:<#^(UICollectionView *collectionView, NSIndexPath *indexPath)didSelectItem#>]
+//    
+    [self.tagView ck_setCellForItemAtIndexPath:^Class(NSIndexPath *indexPath) {
+        return [CKTagCell class];
     } withIdentifier:@"CardSliderCell" Size:^CGSize(NSIndexPath *indexPath) {
         return CGSizeMake(120, 20);
     } willDispalyCell:^(UICollectionViewCell *cell, NSIndexPath *indexPath) {

@@ -10,11 +10,9 @@
 
 @interface CKTagViewManager ()
 
-@property (nonatomic, copy) UICollectionViewCell *(^cellForItem)(UICollectionView *collectionView, NSIndexPath *indexPath);
+@property (nonatomic, copy) Class (^cellForItem)(NSIndexPath *indexPath);
 @property (nonatomic, copy) void (^display)(UICollectionViewCell *cell, NSIndexPath *indexPath);
 @property (nonatomic, copy) void (^didSelectItem)(UICollectionView *collectionView, NSIndexPath *indexPath);
-
-
 
 @end
 
@@ -24,10 +22,10 @@
     CKTagViewManager *manager = [[CKTagViewManager alloc] init];
     return manager;
 }
-- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+- (void)ck_setCellForItemAtIndexPath:(Class(^)(NSIndexPath *indexPath))cellClassForItem
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
             didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem {
-    self.cellForItem = cellForItem;
+    self.cellForItem = cellClassForItem;
     self.display = display;
     self.didSelectItem = didSelectItem;
 }
@@ -43,9 +41,10 @@
 
 #pragma mark -  collectionView Delegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    
 //    static NSString *identifier = @"CardSliderCell";
 //    CKTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
-    return self.cellForItem(collectionView,indexPath);
+    return [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {

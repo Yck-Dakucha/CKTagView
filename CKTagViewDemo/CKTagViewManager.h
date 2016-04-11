@@ -14,11 +14,12 @@ typedef UICollectionViewCell *(^asd)();
 @interface CKTagViewManager : NSObject<UICollectionViewDelegate,UICollectionViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSString *identifier;
 
 + (instancetype)manager;
 
 
-- (void)ck_setCellForItemAtIndexPath:(UICollectionViewCell *(^)(UICollectionView *collectionView, NSIndexPath *indexPath))cellForItem
+- (void)ck_setCellForItemAtIndexPath:(Class(^)(NSIndexPath *indexPath))cellClassForItem
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
             didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem;
 @end
