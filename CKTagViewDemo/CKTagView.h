@@ -14,7 +14,7 @@
 typedef void(^CKTagViewCallCack)(CKTagView *tagView);
 
 
-@property (nonatomic, strong) UICollectionView *collectionView;
+
 @property (nonatomic, assign) CKTagStyle style;
 /**
  *  设置标签内容，与标签位置信息
@@ -34,4 +34,9 @@ typedef void(^CKTagViewCallCack)(CKTagView *tagView);
                                 Size:(CKTagViewSizeCallBack)tagSize
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
             didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem;
+
+- (void)ck_insertItems:(NSArray *)items AtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+- (void)ck_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+- (void)ck_reloadItems:(NSArray *)items AtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+
 @end

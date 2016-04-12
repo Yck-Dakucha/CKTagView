@@ -10,7 +10,7 @@
 #import "CKTagView.h"
 #import "CKTagCell.h"
 
-@interface ViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
+@interface ViewController ()
 
 @property (weak, nonatomic) IBOutlet CKTagView *tagView;
 @property (nonatomic, strong) NSMutableArray *dataArray;
@@ -29,10 +29,7 @@
     [self.tagView ck_setMiddleButtonClick:^(CKTagView *tagView) {
         [tagView ck_changeStyle];
     }];
-//    [self.tagView ck_setCellForItemAtIndexPath:^Class(NSIndexPath *indexPath) {
-//        <#code#>
-//    } withIdentifier:<#(NSString *)#> Size:<#^CGSize(NSIndexPath *indexPath)tagSize#> willDispalyCell:<#^(UICollectionViewCell *cell, NSIndexPath *indexPath)display#> didSelectItemAtIndexPath:<#^(UICollectionView *collectionView, NSIndexPath *indexPath)didSelectItem#>]
-//    
+   
     [self.tagView ck_setCellForItemAtIndexPath:^Class(NSIndexPath *indexPath) {
         return [CKTagCell class];
     } withIdentifier:@"CardSliderCell" Size:^CGSize(NSIndexPath *indexPath) {
@@ -41,11 +38,7 @@
         CKTagCell *tagCell = (CKTagCell *)cell;
         [tagCell ck_setTitle:[NSString stringWithFormat:@"%@",self.dataArray[indexPath.row]]];
     } didSelectItemAtIndexPath:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
-        if (self.dataArray.count == 1) {
-            return;
-        }
-        [self.dataArray removeObjectAtIndex:indexPath.item];
-        [collectionView deleteItemsAtIndexPaths:@[indexPath]];
+        [self.tagView ck_deleteItemsAtIndexPaths:@[indexPath]];
     }];
 }
 

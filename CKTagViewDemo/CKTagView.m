@@ -11,6 +11,7 @@
 
 @interface CKTagView ()
 
+@property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) CKCircleLayout *layout;
 @property (nonatomic, strong) UIButton *centerbutton;
 @property (nonatomic, strong) CKTagViewManager *manager;
@@ -73,6 +74,16 @@
         self.buttonClick(weakSelf);
     }
 }
+- (void)ck_insertItems:(NSArray *)items AtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self.manager ck_insertItems:items atIndexPaths:indexPaths];
+}
+- (void)ck_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self.manager ck_deleteItemsAtIndexPaths:indexPaths];
+}
+- (void)ck_reloadItems:(NSArray *)items AtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    [self.manager ck_reloadItems:items atIndexPaths:indexPaths];
+}
+
 #pragma mark -  改变布局
 - (void)ck_changeStyle {
     [self.layout ck_changeStyle];

@@ -18,8 +18,12 @@ typedef UICollectionViewCell *(^asd)();
 
 + (instancetype)manager;
 
-
 - (void)ck_setCellForItemAtIndexPath:(Class(^)(NSIndexPath *indexPath))cellClassForItem
                      willDispalyCell:(void(^)(UICollectionViewCell *cell, NSIndexPath *indexPath))display
             didSelectItemAtIndexPath:(void(^)(UICollectionView *collectionView, NSIndexPath *indexPath))didSelectItem;
+
+- (void)ck_insertItems:(NSArray *)items atIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+- (void)ck_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+- (void)ck_reloadItems:(NSArray *)items atIndexPaths:(NSArray<NSIndexPath *> *)indexPaths;
+
 @end

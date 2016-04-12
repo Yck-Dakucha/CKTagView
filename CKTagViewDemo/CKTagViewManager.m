@@ -10,6 +10,8 @@
 
 @interface CKTagViewManager ()
 
+@property (nonatomic, strong) UICollectionView *collectionView;
+
 @property (nonatomic, copy) Class (^cellForItem)(NSIndexPath *indexPath);
 @property (nonatomic, copy) void (^display)(UICollectionViewCell *cell, NSIndexPath *indexPath);
 @property (nonatomic, copy) void (^didSelectItem)(UICollectionView *collectionView, NSIndexPath *indexPath);
@@ -32,6 +34,7 @@
 
 #pragma mark -  collectionView dataSource
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    self.collectionView = collectionView;
     return 1;
 }
 
@@ -41,22 +44,45 @@
 
 #pragma mark -  collectionView Delegate
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    
-//    static NSString *identifier = @"CardSliderCell";
-//    CKTagCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     return [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath {
-    self.display(cell,indexPath);
+    if (self.display) {
+        self.display(cell,indexPath);
+    }
 }
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
-//    if (self.dataArray.count == 1) {
-//        return;
-//    }
-//    [self.dataArray removeObjectAtIndex:indexPath.item];
-//    [collectionView deleteItemsAtIndexPaths:@[indexPath]];
-    self.didSelectItem(collectionView,indexPath);
+    if (self.didSelectItem) {
+        self.didSelectItem(collectionView,indexPath);
+    }
+}
+
+#pragma mark -  增删改
+- (void)ck_insertItems:(NSArray *)items atIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+
+    NSMutableIndexSet *tempIndexSet = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *indexpath in indexPaths) {
+        [tempIndexSet addIndex:indexpath.item];
+    }
+    [self.dataArray insertObjects:items atIndexes:tempIndexSet];
+    [self.collectionView insertItemsAtIndexPaths:indexPaths];
+}
+- (void)ck_deleteItemsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    NSMutableIndexSet *tempIndexSet = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *indexpath in indexPaths) {
+        [tempIndexSet addIndex:indexpath.item];
+    }
+    [self.dataArray removeObjectsAtIndexes:tempIndexSet];
+    [self.collectionView deleteItemsAtIndexPaths:indexPaths];
+}
+- (void)ck_reloadItems:(NSArray *)items atIndexPaths:(NSArray<NSIndexPath *> *)indexPaths {
+    NSMutableIndexSet *tempIndexSet = [NSMutableIndexSet indexSet];
+    for (NSIndexPath *indexpath in indexPaths) {
+        [tempIndexSet addIndex:indexpath.item];
+    }
+    [self.dataArray replaceObjectsAtIndexes:tempIndexSet withObjects:items];
+    [self.collectionView reloadItemsAtIndexPaths:indexPaths];
 }
 
 #pragma mark -  懒加载
